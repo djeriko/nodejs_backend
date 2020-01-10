@@ -8,7 +8,7 @@ exports.getProducts = (req, res, next) => {
       path: "/products",
     });
   });
-};
+}
 
 exports.getIndex = (req, res, next) => {
   Product.fetchAll(products => {
@@ -18,7 +18,7 @@ exports.getIndex = (req, res, next) => {
       path: "/",
     });
   });
-};
+}
 
 exports.getCart = (req, res, next) => {
   res.render('shop/cart', {
