@@ -46,6 +46,32 @@ module.exports = class Product {
     });
   }
 
+  delete() {
+    getProductFromFile(products => {
+      const deletingProductIndex = products.findIndex(
+        prod => prod.id === this.id
+      );
+      const deletedProduct = [...products];
+      deletedProduct.splice(deletingProductIndex, 1);
+      console.log('Check');
+      // deletedProduct[deletingProductIndex] = this;
+      fs.writeFile(p, JSON.stringify(deletedProduct), err => {
+        console.log(err);
+      })
+    })
+  }
+
+  static deleteById(id) {
+    getProductFromFile(product => {
+      const updatedProducts = product.filter(prod => prod.id !== id);
+      fs.writeFile(p, JSON.stringify(updatedProducts), err => {
+        if (!err) {
+          
+        }
+      });  
+    })
+  }
+
   static fetchAll(cb) {
     getProductFromFile(cb);
   }
